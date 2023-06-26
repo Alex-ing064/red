@@ -37,7 +37,7 @@ var post_routes = require('./routes/post');
 mongoose.connect('mongodb://127.0.0.1:27017/social',(err,res)=>{
     if(err) console.log(err);
     else httpServer.listen(port,function(){
-        console.log("Servidor corriento " + port);
+        console.log("umariana campus social, corriendo con exito en el servidor local "+ port);
     });
 });
 
