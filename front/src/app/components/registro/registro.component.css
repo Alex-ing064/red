@@ -1,0 +1,12 @@
+main {
+    background: linear-gradient(-45deg, #009ada, #396eaf, #3861ac);
+    background-size: 100% 100%;
+    animation: gradient 8s ease infinite;
+}
+
+.logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 70px;
+    margin-left: 05px;
+}

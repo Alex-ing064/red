@@ -1,4 +1,15 @@
 span#text-logo {
     font-weight: 600;
-    color: #316197;
+    color: #ffffff;
 }
+header {
+    background: linear-gradient(-45deg,#009ada,#396eaf,#4669ac);
+    background-size: 100% 100%;
+    animation: gradient 8s ease infinite;
+}
+.logo{
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    margin-right: 10px;
+  }
