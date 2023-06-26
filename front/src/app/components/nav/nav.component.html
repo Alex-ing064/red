@@ -1,17 +1,12 @@
-<!-- =======================
-Header START -->
+
 <header class="navbar-light fixed-top header-static bg-mode">
 
-    <!-- Logo Nav START -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <!-- Logo START -->
             <a class="navbar-brand" [routerLink]="['/']">
 				<span id="text-logo">Red Social</span>
 			</a>
-            <!-- Logo END -->
 
-            <!-- Responsive navbar toggler -->
             <button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-animation">
                 <span></span>
@@ -20,10 +15,8 @@ Header START -->
                 </span>
             </button>
 
-            <!-- Main navbar START -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
 
-                <!-- Nav Search START -->
                 <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
                     <div class="nav-item w-100">
                         <div class="rounded position-relative">
@@ -32,12 +25,9 @@ Header START -->
                         </div>
                     </div>
                 </div>
-                <!-- Nav Search END -->
 
             </div>
-            <!-- Main navbar END -->
-            <!--  -->
-            <!-- Nav right START -->
+        
             <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
 
                 <li class="nav-item dropdown ms-2">
@@ -115,7 +105,6 @@ Header START -->
                                 </div>
                                 <ng-container *ngIf="!load_invitacion">
                                     <ul class="list-group list-group-flush list-unstyled p-2" *ngIf="invitaciones.length >= 1">
-                                        <!-- Notif item -->
                                         <li *ngFor="let item of invitaciones">
                                             <div class="list-group-item list-group-item-action rounded badge-unread d-flex border-0 mb-1 p-3">
                                                 <div class="avatar text-center d-none d-sm-inline-block">
@@ -150,17 +139,14 @@ Header START -->
                         </div>
                     </div>
                 </li>
-                <!-- Notification dropdown END -->
 
                 <li class="nav-item ms-2 dropdown">
                     <a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
 					<img class="avatar-img rounded-2" [src]="avatar" alt="">
 				</a>
                     <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3" aria-labelledby="profileDropdown">
-                        <!-- Profile info -->
                         <li class="px-3">
                             <div class="d-flex align-items-center position-relative">
-                                <!-- Avatar -->
                                 <div class="avatar me-3">
                                     <img class="avatar-img rounded-circle" [src]="avatar" alt="avatar">
                                 </div>
@@ -173,7 +159,6 @@ Header START -->
                             </div>
                             <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" [routerLink]="['/cuenta/'+user.username+'/posts']">Ver perfil</a>
                         </li>
-                        <!-- Links -->
                         <li><a class="dropdown-item" [routerLink]="['/cuenta/configuracion']" routerLinkActive="router-link-active"><i class="bi bi-gear fa-fw me-2"></i>Mi cuenta</a></li>
                         
                         
@@ -183,13 +168,8 @@ Header START -->
                         
                     </ul>
                 </li>
-                <!-- Profile START -->
 
             </ul>
-            <!-- Nav right END -->
         </div>
     </nav>
-    <!-- Logo Nav END -->
 </header>
-<!-- =======================
-Header END -->

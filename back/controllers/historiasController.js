@@ -6,9 +6,7 @@ var path = require('path');
 
 const createStory = async function(req,res){
     if (req.user) {
-        
-        //req.body
-        //req.files
+    
         let img_path = req.files.imagen.path.split('\\')[2];
 
         let exp = new Date();
@@ -32,7 +30,6 @@ const obtener_historias_usuario = async function(req,res){
     if (req.user) {
         let amigos = await Usuario_amigo.find({usuario_origen:req.user.sub}).populate('usuario_amigo');
 
-        //item
         let today = Date.parse(new Date())/1000;
         var historias_vigentes_ = [];
 

@@ -20,7 +20,6 @@ const create_post = async function(req,res){
             data.usuario = req.user.sub;
             let post = await Post.create(data);
 
-            //Notificacion
             let amigos = await Usuario_amigo.find({usuario_origen:req.user.sub}).populate('usuario_amigo');
 
             for(var item of amigos){
@@ -50,7 +49,7 @@ const get_post_amigos = async function(req,res){
     if (req.user) {
         let post = [];
         let data = [];
-        let limit = req.params['limit']; //2
+        let limit = req.params['limit']; 
         let amigos = await Usuario_amigo.find({usuario_origen:req.user.sub}).populate('usuario_amigo');
         let my_user = await Usuario_amigo.find({usuario_amigo: req.user.sub}).populate('usuario_amigo');
 
@@ -114,7 +113,7 @@ const get_post_amigos = async function(req,res){
             return 0;
         });
 
-        let idx = 0; //0 - 1 -2
+        let idx = 0;
         for(var item of post){
            if(idx < limit) data.push(item)
            idx++;
@@ -146,11 +145,9 @@ const set_like_post = async function(req,res){
         let obj_like = await Post_likes.find({usuario:req.user.sub,post:data.post});
         
         if(obj_like.length >= 1){
-            //se emitio un like
             estado = 'Eliminacion';
             await Post_likes.findByIdAndRemove({_id:obj_like[0]._id})
         }else if(obj_like.length == 0){
-            //no se emitio ningun like
             estado = 'Creación';
             await Post_likes.create({
                 post: data.post,
@@ -171,7 +168,6 @@ const set_comentario_post = async function(req,res){
         data.usuario = req.user.sub;
         let comentario = await Post_comentarios.create(data);
 
-        //Notificacion
         let amigos = await Usuario_amigo.find({usuario_origen:req.user.sub}).populate('usuario_amigo');
 
         for(var item of amigos){
@@ -181,15 +177,10 @@ const set_comentario_post = async function(req,res){
                 tipo: 'Comentarios',
                 descripcion,
                 usuario_interaccion: req.user.sub,
-                usuario: item.usuario_amigo._id, //
+                usuario: item.usuario_amigo._id,
                 post: data.post
             });
-        }
-
-        //Diego a creado una publicacion
-
-        //vincent => Diego a creado una nueva publicacion
-        
+        }     
         res.status(200).send({data:comentario,amigos});
     } else {
         res.status(403).send({message: 'NoAccess'}); 

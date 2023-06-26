@@ -48,7 +48,7 @@ export class InfoPerfilComponent implements OnInit {
         if(response.data != undefined){
           this.data = true;
           this.n_amigos = response.n_amigos;
-          this.cuenta = response.data; //la cuenta que estamos viendo
+          this.cuenta = response.data; 
           console.log(this.cuenta);
           
           if(!this.cuenta.portada) this.portada = 'assets/images/portada.jpg';

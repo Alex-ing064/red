@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var NotificacionSchema = Schema({
-    tipo: {type: String, required: true}, //Publicaciones - Solicitudes de amistad
+    tipo: {type: String, required: true}, 
     descripcion: {type: String, required: true},
     estado: {type: Boolean, default: false, required: true}, 
-    usuario: {type: Schema.ObjectId, ref: 'usuario', required: true}, //Usuario de la notificacion
-    usuario_interaccion: {type: Schema.ObjectId, ref: 'usuario', required: true}, //Usuario que realizo la accion
+    usuario: {type: Schema.ObjectId, ref: 'usuario', required: true}, 
+    usuario_interaccion: {type: Schema.ObjectId, ref: 'usuario', required: true}, 
 
     post: {type: Schema.ObjectId, ref: 'post', required: false},
     usuario_amigo: {type: Schema.ObjectId, ref: 'usuario_amigo', required: false},

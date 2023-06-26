@@ -36,7 +36,6 @@ const create_usuario = async function(req,res){
 
         bcrypt.genSalt(saltRounds, function(err, salt) {
             bcrypt.hash(data.password, salt, async function(err, hash) {
-                // Store hash in your password DB.
                 data.password = hash;
                 data.username = '@'+uniqueUsernameGenerator(config);
                 let usuario = await Usuario.create(data);
@@ -55,11 +54,8 @@ const login_usuario = async function(req,res){
     let usuario = await Usuario.find({email:data.email});
 
     if(usuario.length >= 1){
-        //correo existe
         bcrypt.compare(data.password, usuario[0].password, function(err, result) {
-            // result == true
             if(!err){
-                //
                 if(result){
                     res.status(200).send({
                         data:usuario[0],
@@ -196,7 +192,6 @@ const reset_password = async function(req,res){
 }
 
 
-/////INVITACIONES DE AMISTAD
 
 const send_invitacion_amistad = async function(req,res){
     if (req.user) {
@@ -218,7 +213,6 @@ const get_usuario_random = async function(req,res){
         let usuarios_amigos = await Usuario_amigo.find({usuario_origen:req.user.sub});
         let count = 0;
         for(var item of usuarios){
-            //QUITAR USUARIOS A QUIENES SE ENVIA UNA INVITACIÓN
             let reg_enviadas = invitaciones_enviadas.filter(subitem=> subitem.usuario_destinatario.toString() == item._id.toString());
 
             let reg_recibidas = invitaciones_recibidas.filter(subitem=> subitem.usuario_origen.toString() == item._id.toString());
@@ -261,29 +255,29 @@ const get_invitaciones_usuario= async function(req,res){
 
 const aceptar_denegar_invitacion = async function(req,res){
     if (req.user) {
-        let tipo = req.params['tipo'];//Denegar Aprobar 
+        let tipo = req.params['tipo'];
         let id = req.params['id'];
 
         if(tipo === 'Denegar'){
-            //ELIMINAR LA INVITACION
+        
             await Usuario_invitacion.findOneAndRemove({_id:id});
             res.status(200).send({data:true});
         }else if(tipo === 'Aprobar'){
-            //OBTENER LA INFORMACION DE LA INVITACIÓN
+       
             let invitacion = await Usuario_invitacion.findById({_id:id});
 
-            //CREAR LA RELACION DE AMIGO
+         
             await Usuario_amigo.create({
-                usuario_origen: req.user.sub, //Sheldon YO
-                usuario_amigo: invitacion.usuario_origen //Diego
+                usuario_origen: req.user.sub, 
+                usuario_amigo: invitacion.usuario_origen 
             });
             
             await Usuario_amigo.create({
-                usuario_origen: invitacion.usuario_origen, //Diego
-                usuario_amigo:  req.user.sub//Sheldon YO
+                usuario_origen: invitacion.usuario_origen, 
+                usuario_amigo:  req.user.sub
             });
 
-            //ELIMINAR LA INVITACIÓN
+       
             await Usuario_invitacion.findOneAndRemove({_id:id});
             res.status(200).send({data:true});
         }
@@ -389,8 +383,8 @@ function email_code_reset(code,email){
             service: 'gmail',
             host: 'smtp.gmail.com',
             auth: {
-                user: 'diegoarca02@gmail.com',
-                pass: 'ogfvvlxksebtrkfj'
+                user: 'ingcabezas2204@gmail.com',
+                pass: 'dgitwenamgroiydx'
             }
         }));
     
@@ -401,7 +395,7 @@ function email_code_reset(code,email){
             var htmlToSend = template({op:true});
     
             var mailOptions = {
-                from: '"Red Social" <diegoarca02@gmail.com>',
+                from: '"Red Social" <ingcabezas2204@gmail.com>',
                 to: email,
                 subject: 'Código de restablecimiento',
                 html: htmlToSend

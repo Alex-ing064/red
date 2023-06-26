@@ -55,7 +55,6 @@ export class NavComponent implements OnInit {
       let user_noticion = data.filter((item:any)=> item.usuario_amigo._id == this.user._id);
       
       if(user_noticion.length >= 1){
-        //ACTUALIZAR NOTIFICACION
         this.init_notifaciones();
         
       }

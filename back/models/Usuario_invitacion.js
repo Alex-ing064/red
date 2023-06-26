@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Usuario_invitacionSchema = Schema({
-    usuario_origen: {type: Schema.ObjectId, ref: 'usuario', required: true}, //ID QUE ENVIA INVITACION
-    usuario_destinatario: {type: Schema.ObjectId, ref: 'usuario', required: true}, //ID RECEPTOR DE INVITACION
+    usuario_origen: {type: Schema.ObjectId, ref: 'usuario', required: true}, 
+    usuario_destinatario: {type: Schema.ObjectId, ref: 'usuario', required: true},
     createdAt: {type: Date, default: Date.now},
 });
 

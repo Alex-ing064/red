@@ -19,7 +19,6 @@ io.on("connection", (socket) => {
     });
 
     socket.on('set-invitacion',function(data){
-        //origen-destinario
         io.emit('set-new-invitacion',data);
     });
 
