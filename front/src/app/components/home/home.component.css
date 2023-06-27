@@ -24,8 +24,11 @@
 /*     100%{background-position:0% 92%} */
 }
 
+/* Color de fondo por debajo del header */
+
+/* 
 main {
   background: linear-gradient(-90deg,#ffffff,#ffffff,#3861ac);
     background-size: 100% 100%;
     animation: gradient 8s ease infinite;
-}
+} */
